@@ -35,8 +35,8 @@ public class QuartzFactory extends AdaptableJobFactory {
      * @throws SchedulerException
      */
     private void startJob1(Scheduler scheduler) throws SchedulerException {
+        //配置定时任务对应的Job，这里执行的是ScheduledJob类中定时的方法
         JobDetail jobDetail = JobBuilder.newJob(TestJob.class) .withIdentity("job1", "group1").build();
-        //每天凌晨两点启动
         /**
          * 0 0 12 * * ? 每天12点触发
          0 15 10 ? * * 每天10点15分触发
@@ -58,6 +58,7 @@ public class QuartzFactory extends AdaptableJobFactory {
          0 15 10 ? * 6#3 每月的第三周的星期五开始触发
          0 0 12 1/5 * ? 每月的第一个中午开始每隔5天触发一次
          */
+        //每秒启动一次,测试方便
         CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule("* * * * * ?");
         CronTrigger cronTrigger = TriggerBuilder.newTrigger().withIdentity("trigger1", "group1") .withSchedule(scheduleBuilder).build();
         scheduler.scheduleJob(jobDetail,cronTrigger);

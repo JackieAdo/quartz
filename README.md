@@ -1,2 +1,4 @@
 # quartz
-SpringBoot 整合quartz 框架
+SpringBoot 整合quartz框架实现多任务配置
+
+springboot框架和quartz整合时,如果是springboot2.0以上是已经整合了quartz,引入spring-boot-starter-quartz依赖即可,如果是低版本的正常引用quartz依赖和spring-context-support即可
